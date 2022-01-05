@@ -1,0 +1,45 @@
+﻿@page
+@model ProiectAprozar.Pages.Cosuri.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editare comandă</h1>
+
+<h4>Comandă</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Cos.ID" />
+            <div class="form-group">
+                <label asp-for="Cos.FructID" class="control-label"></label>
+                <select asp-for="Cos.FructID" class="form-control" asp-items="ViewBag.FructID"></select>
+                <span asp-validation-for="Cos.FructID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cos.ClientID" class="control-label"></label>
+                <select asp-for="Cos.ClientID" class="form-control" asp-items="ViewBag.ClientID"></select>
+                <span asp-validation-for="Cos.ClientID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cos.Cantitate" class="control-label"></label>
+                <input asp-for="Cos.Cantitate" class="form-control" />
+                <span asp-validation-for="Cos.Cantitate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Fructe/Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

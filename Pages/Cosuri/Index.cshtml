@@ -1,0 +1,62 @@
+﻿@page
+@model ProiectAprozar.Pages.Cosuri.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Comanda client</h1>
+
+<p>
+    <a asp-page="Create">Adaugare produs</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Cos[0].Cantitate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cos[0].Fruct.Denumire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cos[0].Client.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cos[0].Fruct.Pret)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Cos) {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantitate) kg
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fruct.Denumire)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fruct.Pret) kg/lei
+            </td>
+            <td>
+                @((decimal)item.Fruct.Pret * item.Cantitate) lei
+            </td>
+            
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+       
+}  
+        
+    </tbody>
+</table>
